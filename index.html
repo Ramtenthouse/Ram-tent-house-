@@ -64,6 +64,103 @@
       <li>Custom Theme Events</li>
     </ul>
 
+    <h2>Book Your Tent House Setup</h2>
+
+<form action="https://formsubmit.co/your-email@example.com" method="POST">
+  <label>Your Name:</label><br>
+  <input type="text" name="name" required><br><br>
+
+  <label>Your Phone Number:</label><br>
+  <input type="tel" name="phone" required><br><br>
+
+  <label>Event Date:</label><br>
+  <input type="date" name="event_date" required><br><br>
+
+  <style>
+    .service-item {
+      margin-bottom: 10px;
+    }
+    .service-label {
+      display: inline-block;
+      width: 250px;
+    }
+    .qty-box {
+      display: inline-flex;
+      align-items: center;
+    }
+    .qty-box input {
+      width: 40px;
+      text-align: center;
+    }
+    .qty-box button {
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    function changeQty(id, delta) {
+      var input = document.getElementById(id);
+      var current = parseInt(input.value) || 0;
+      input.value = Math.max(0, current + delta);
+    }
+  </script>
+
+  <h3>Tents & Coverings</h3>
+  <div class="service-item"><span class="service-label">Waterproof Tent</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('waterproof_tent', -1)">-</button>
+      <input type="number" name="Waterproof Tent" id="waterproof_tent" value="0" min="0">
+      <button type="button" onclick="changeQty('waterproof_tent', 1)">+</button>
+    </span>
+  </div>
+  <div class="service-item"><span class="service-label">Wedding Tent / Shamiana</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('wedding_tent', -1)">-</button>
+      <input type="number" name="Wedding Tent" id="wedding_tent" value="0" min="0">
+      <button type="button" onclick="changeQty('wedding_tent', 1)">+</button>
+    </span>
+  </div>
+  
+  <!-- Repeat like this for other services... -->
+
+  <h3>Seating & Furniture</h3>
+  <div class="service-item"><span class="service-label">Plastic Chairs</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('plastic_chairs', -1)">-</button>
+      <input type="number" name="Plastic Chairs" id="plastic_chairs" value="0" min="0">
+      <button type="button" onclick="changeQty('plastic_chairs', 1)">+</button>
+    </span>
+  </div>
+  <div class="service-item"><span class="service-label">VIP Sofas</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('vip_sofas', -1)">-</button>
+      <input type="number" name="VIP Sofas" id="vip_sofas" value="0" min="0">
+      <button type="button" onclick="changeQty('vip_sofas', 1)">+</button>
+    </span>
+  </div>
+  <div class="service-item"><span class="service-label">Round Tables</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('wedding_tent', -1)">-</button>
+      <input type="number" name="Wedding Tent" id="wedding_tent" value="0" min="0">
+      <button type="button" onclick="changeQty('wedding_tent', 1)">+</button>
+    </span>
+  </div>
+  <div class="service-item"><span class="service-label">Tables</span>
+    <span class="qty-box">
+      <button type="button" onclick="changeQty('wedding_tent', -1)">-</button>
+      <input type="number" name="Wedding Tent" id="wedding_tent" value="0" min="0">
+      <button type="button" onclick="changeQty('wedding_tent', 1)">+</button>
+    </span>
+  </div>
+
+  <!-- Add the rest of your items here in the same format -->
+
+  <br><br>
+  <button type="submit">Submit Booking Request</button>
+</form>
+
     <h2>Location</h2>
     <p>We are located in Dammalapadu. Find us on the map below:</p>
     <iframe 
