@@ -5,44 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ram Tent House - Booking</title>
     <style>
-        body { font-family: sans-serif; background-color: #f4f4f4; padding: 20px; }
-        .box { max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #006666; text-align: center; }
-        input[type="text"], input[type="tel"], input[type="date"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .btn-qty { width: 35px; height: 35px; cursor: pointer; background: #006666; color: white; border: none; border-radius: 5px; font-weight: bold; }
-        .num { width: 40px; text-align: center; border: none; font-size: 16px; }
-        .submit-btn { width: 100%; background: #006666; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; margin-top: 20px; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }
+        .container { max-width: 650px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        h1 { color: #006666; text-align: center; font-size: 28px; margin-bottom: 5px; }
+        .sub-text { text-align: center; color: #666; margin-bottom: 25px; }
+        h3 { color: #004d4d; margin-top: 30px; border-left: 5px solid #006666; padding-left: 12px; background: #e6f2f2; padding: 8px 12px; border-radius: 0 5px 5px 0; }
+        .form-group { margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin-bottom: 8px; }
+        input[type="text"], input[type="tel"], input[type="date"], textarea {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px;
+        }
+        .item-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .controls { display: flex; align-items: center; }
+        .btn-qty { 
+            width: 40px; height: 40px; background: #006666; color: white; border: none; 
+            border-radius: 6px; cursor: pointer; font-size: 22px; font-weight: bold; transition: 0.3s;
+        }
+        .btn-qty:hover { background: #004d4d; }
+        .qty-input { 
+            width: 70px; text-align: center; border: 1px solid #ccc; margin: 0 12px; 
+            height: 38px; font-size: 18px; font-weight: bold; border-radius: 6px;
+        }
+        .submit-btn { 
+            width: 100%; background-color: #006666; color: white; padding: 18px; border: none; 
+            border-radius: 8px; cursor: pointer; font-size: 20px; font-weight: bold; margin-top: 35px; box-shadow: 0 4px 10px rgba(0,102,102,0.3);
+        }
     </style>
 </head>
 <body>
-<div class="box">
+
+<div class="container">
     <h1>Ram Tent House</h1>
+    <p class="sub-text">Pro: B. Ramesh | మా దగ్గర అన్ని శుభకార్యములకు వస్తువులు దొరుకును</p>
+    
     <form action="https://formspree.io/f/mbdwleja" method="POST">
-        <label>పేరు (Name):</label>
-        <input type="text" name="Name" required>
         
-        <label>ఫోన్ (Phone):</label>
-        <input type="tel" name="Phone" required>
+        <div class="form-group">
+            <label>Customer Name (పేరు):</label>
+            <input type="text" name="Customer_Name" placeholder="మీ పేరు నమోదు చేయండి" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number (ఫోన్):</label>
+            <input type="tel" name="Phone_Number" placeholder="మీ ఫోన్ నంబర్" required>
+        </div>
+
+        <div class="form-group">
+            <label>Event Date (ఫంక్షన్ తేదీ):</label>
+            <input type="date" name="Event_Date" required>
+        </div>
+
+        <h3>Main Items (ముఖ్యమైనవి)</h3>
         
-        <label>తేదీ (Date):</label>
-        <input type="date" name="Date" required>
+        <div class="item-row"><span>Waterproof Tent</span><div class="controls">
+            <button type="button" class="btn-qty" onclick="c('t1',-1)">-</button>
+            <input type="number" name="Waterproof_Tent" id="t1" value="0" min="0" class="qty-input">
+            <button type="button" class="btn-qty" onclick="c('t1',1)">+</button>
+        </div></div>
 
-        <h3>వస్తువుల వివరాలు:</h3>
-        <div class="row"><span>Waterproof Tent</span><div><button type="button" class="btn-qty" onclick="q('t1',-1)">-</button><input name="Waterproof_Tent" id="t1" value="0" class="num" readonly><button type="button" class="btn-qty" onclick="q('t1',1)">+</button></div></div>
-        <div class="row"><span>Plastic Chairs</span><div><button type="button" class="btn-qty" onclick="q('c1',-1)">-</button><input name="Plastic_Chairs" id="c1" value="0" class="num" readonly><button type="button" class="btn-qty" onclick="q('c1',1)">+</button></div></div>
-        <div class="row"><span>VIP Sofas</span><div><button type="button" class="btn-qty" onclick="q('s1',-1)">-</button><input name="VIP_Sofas" id="s1" value="0" class="num" readonly><button type="button" class="btn-qty" onclick="q('s1',1)">+</button></div></div>
-        <div class="row"><span>Tables</span><div><button type="button" class="btn-qty" onclick="q('ta1',-1)">-</button><input name="Tables" id="ta1" value="0" class="num" readonly><button type="button" class="btn-qty" onclick="q('ta1',1)">+</button></div></div>
+        <div class="item-row"><span>Plastic Chairs</span><div class="controls">
+            <button type="button" class="btn-qty" onclick="c('c1',-1)">-</button>
+            <input type="number" name="Plastic_Chairs" id="c1" value="0" min="0" class="qty-input">
+            <button type="button" class="btn-qty" onclick="c('c1',1)">+</button>
+        </div></div>
 
-        <button type="submit" class="submit-btn">Submit Request</button>
+        <div class="item-row"><span>Steel Tables</span><div class="controls">
+            <button type="button" class="btn-qty" onclick="c('ta1',-1)">-</button>
+            <input type="number" name="Steel_Tables" id="ta1" value="0" min="0" class="qty-input">
+            <button type="button" class="btn-qty" onclick="c('ta1',1)">+</button>
+        </div></div>
+
+        <h3>Electrical & Cooling</h3>
+
+        <div class="item-row"><span>Cooler (కూలర్)</span><div class="controls">
+            <button type="button" class="btn-qty" onclick="c('co1',-1)">-</button>
+            <input type="number" name="Cooler" id="co1" value="0" min="0" class="qty-input">
+            <button type="button" class="btn-qty" onclick="c('co1',1)">+</button>
+        </div></div>
+
+        <div class="item-row"><span>Fans (ఫ్యాన్లు)</span><div class="controls">
+            <button type="button" class="btn-qty" onclick="c('f1',-1)">-</button>
+            <input type="number" name="Fans" id="f1" value="0" min="0" class="qty-input">
+            <button type="button" class="btn-qty" onclick="c('f1',1)">+</button>
+        </div></div>
+
+        <h3>Others (ఇతర వస్తువులు)</h3>
+        <div class="form-group">
+            <label>Additional Items / Message:</label>
+            <textarea name="Other_Requirements" rows="4" placeholder="పైన లేని వస్తువులు ఏవైనా కావాలంటే ఇక్కడ టైప్ చేయండి... (ఉదా: 5 గ్లాసులు, 2 మంచాలు)"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Booking Request</button>
     </form>
 </div>
+
 <script>
-    function q(id, val) {
-        let i = document.getElementById(id);
-        let n = parseInt(i.value) + val;
-        if (n >= 0) i.value = n;
+    function c(id, val) {
+        const input = document.getElementById(id);
+        let current = parseInt(input.value) || 0;
+        let next = current + val;
+        if (next >= 0) input.value = next;
     }
 </script>
+
 </body>
 </html>
