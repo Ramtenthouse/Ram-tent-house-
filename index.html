@@ -5,102 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ram Tent House - Booking</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }
-        .container { max-width: 650px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-        h1 { color: #006666; text-align: center; font-size: 28px; margin-bottom: 5px; }
-        .sub-text { text-align: center; color: #666; margin-bottom: 25px; }
-        h3 { color: #004d4d; margin-top: 30px; border-left: 5px solid #006666; padding-left: 12px; background: #e6f2f2; padding: 8px 12px; border-radius: 0 5px 5px 0; }
-        .form-group { margin-bottom: 20px; }
-        label { font-weight: bold; display: block; margin-bottom: 8px; }
+        :root { --primary: #006666; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); margin: 0; padding: 0; color: #333; }
+        
+        .header { background: var(--primary); color: white; text-align: center; padding: 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .header h1 { margin: 0; font-size: 24px; }
+        .call-btn { background: #ff9f43; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; font-size: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        .container { max-width: 600px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: bold; display: block; margin-bottom: 5px; color: #555; }
         input[type="text"], input[type="tel"], input[type="date"], textarea {
-            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 16px;
         }
-        .item-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
+
+        h3 { border-bottom: 2px solid var(--primary); padding-bottom: 5px; color: var(--primary); margin-top: 25px; }
+
+        .item-card { display: flex; align-items: center; justify-content: space-between; background: #fdfdfd; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #eee; }
+        .item-info { font-weight: bold; font-size: 16px; }
+
         .controls { display: flex; align-items: center; }
-        .btn-qty { 
-            width: 40px; height: 40px; background: #006666; color: white; border: none; 
-            border-radius: 6px; cursor: pointer; font-size: 22px; font-weight: bold; transition: 0.3s;
-        }
-        .btn-qty:hover { background: #004d4d; }
-        .qty-input { 
-            width: 70px; text-align: center; border: 1px solid #ccc; margin: 0 12px; 
-            height: 38px; font-size: 18px; font-weight: bold; border-radius: 6px;
-        }
-        .submit-btn { 
-            width: 100%; background-color: #006666; color: white; padding: 18px; border: none; 
-            border-radius: 8px; cursor: pointer; font-size: 20px; font-weight: bold; margin-top: 35px; box-shadow: 0 4px 10px rgba(0,102,102,0.3);
-        }
+        .btn-qty { width: 35px; height: 35px; background: var(--primary); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 20px; font-weight: bold; }
+        .qty-input { width: 60px; text-align: center; border: 1px solid #ddd; margin: 0 10px; height: 35px; font-size: 16px; border-radius: 5px; font-weight: bold; }
+
+        .submit-btn { width: 100%; background: var(--primary); color: white; padding: 18px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,102,102,0.2); }
+        .whatsapp-btn { display: block; text-align: center; background: #25D366; color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 16px; }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="header">
     <h1>Ram Tent House</h1>
-    <p class="sub-text">Pro: B. Ramesh | మా దగ్గర అన్ని శుభకార్యములకు వస్తువులు దొరుకును</p>
-    
+    <!-- కాల్ బటన్ లో మీ నంబర్ యాడ్ చేసాను -->
+    <a href="tel:+917306082427" class="call-btn">📞 కాల్ చేయండి: 7306082427</a>
+</div>
+
+<div class="container">
     <form action="https://formspree.io/f/mbdwleja" method="POST">
         
+        <!-- Redirect to thanks.html after submission -->
+        <input type="hidden" name="_next" value="https://ram-tent-house-.github.io/thanks.html">
+
         <div class="form-group">
             <label>Customer Name (పేరు):</label>
-            <input type="text" name="Customer_Name" placeholder="మీ పేరు నమోదు చేయండి" required>
+            <input type="text" name="Name" required placeholder="మీ పేరు నమోదు చేయండి">
         </div>
 
         <div class="form-group">
             <label>Phone Number (ఫోన్):</label>
-            <input type="tel" name="Phone_Number" placeholder="మీ ఫోన్ నంబర్" required>
+            <input type="tel" name="Phone" required placeholder="మీ ఫోన్ నంబర్">
         </div>
 
         <div class="form-group">
-            <label>Event Date (ఫంక్షన్ తేదీ):</label>
-            <input type="date" name="Event_Date" required>
+            <label>Function Date (తేదీ):</label>
+            <input type="date" name="Date" required>
         </div>
 
-        <h3>Main Items (ముఖ్యమైనవి)</h3>
+        <h3>Items Selection (వస్తువులు)</h3>
         
-        <div class="item-row"><span>Waterproof Tent</span><div class="controls">
-            <button type="button" class="btn-qty" onclick="c('t1',-1)">-</button>
-            <input type="number" name="Waterproof_Tent" id="t1" value="0" min="0" class="qty-input">
-            <button type="button" class="btn-qty" onclick="c('t1',1)">+</button>
-        </div></div>
-
-        <div class="item-row"><span>Plastic Chairs</span><div class="controls">
-            <button type="button" class="btn-qty" onclick="c('c1',-1)">-</button>
-            <input type="number" name="Plastic_Chairs" id="c1" value="0" min="0" class="qty-input">
-            <button type="button" class="btn-qty" onclick="c('c1',1)">+</button>
-        </div></div>
-
-        <div class="item-row"><span>Steel Tables</span><div class="controls">
-            <button type="button" class="btn-qty" onclick="c('ta1',-1)">-</button>
-            <input type="number" name="Steel_Tables" id="ta1" value="0" min="0" class="qty-input">
-            <button type="button" class="btn-qty" onclick="c('ta1',1)">+</button>
-        </div></div>
-
-        <h3>Electrical & Cooling</h3>
-
-        <div class="item-row"><span>Cooler (కూలర్)</span><div class="controls">
-            <button type="button" class="btn-qty" onclick="c('co1',-1)">-</button>
-            <input type="number" name="Cooler" id="co1" value="0" min="0" class="qty-input">
-            <button type="button" class="btn-qty" onclick="c('co1',1)">+</button>
-        </div></div>
-
-        <div class="item-row"><span>Fans (ఫ్యాన్లు)</span><div class="controls">
-            <button type="button" class="btn-qty" onclick="c('f1',-1)">-</button>
-            <input type="number" name="Fans" id="f1" value="0" min="0" class="qty-input">
-            <button type="button" class="btn-qty" onclick="c('f1',1)">+</button>
-        </div></div>
-
-        <h3>Others (ఇతర వస్తువులు)</h3>
-        <div class="form-group">
-            <label>Additional Items / Message:</label>
-            <textarea name="Other_Requirements" rows="4" placeholder="పైన లేని వస్తువులు ఏవైనా కావాలంటే ఇక్కడ టైప్ చేయండి... (ఉదా: 5 గ్లాసులు, 2 మంచాలు)"></textarea>
+        <div class="item-card">
+            <span class="item-info">Plastic Chairs</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="change('c1',-1)">-</button>
+                <input type="number" name="Chairs" id="c1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="change('c1',1)">+</button>
+            </div>
         </div>
 
-        <button type="submit" class="submit-btn">Send Booking Request</button>
+        <div class="item-card">
+            <span class="item-info">Steel Tables</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="change('t1',-1)">-</button>
+                <input type="number" name="Tables" id="t1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="change('t1',1)">+</button>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <span class="item-info">Coolers / Fans</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="change('f1',-1)">-</button>
+                <input type="number" name="Fans" id="f1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="change('f1',1)">+</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Others (ఇతర వివరాలు):</label>
+            <textarea name="Message" rows="3" placeholder="ఇతర వస్తువులు ఏవైనా కావాలంటే ఇక్కడ రాయండి..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Email ద్వారా పంపండి</button>
+        
+        <!-- వాట్సాప్ బటన్ లో మీ నంబర్ యాడ్ చేసాను -->
+        <a href="https://wa.me/917306082427" class="whatsapp-btn">Direct WhatsApp Message</a>
     </form>
 </div>
 
 <script>
-    function c(id, val) {
+    function change(id, val) {
         const input = document.getElementById(id);
         let current = parseInt(input.value) || 0;
         let next = current + val;
