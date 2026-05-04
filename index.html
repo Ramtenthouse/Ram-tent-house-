@@ -3,99 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ram Tent House - Booking Portal</title>
+    <title>Ram Tent House - Booking</title>
     <style>
-        :root { --primary: #003d3d; --gold: #d4af37; --white: #ffffff; }
-
+        :root { --primary: #004d4d; --accent: #ff9f43; }
+        
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; padding: 0; 
-            /* image_b5f281.png లోని బ్లూ డెకరేషన్ బ్యాక్‌గ్రౌండ్‌గా */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('image_b5f281.png'); 
+            /* బ్యాక్‌గ్రౌండ్ లో డిజైన్ లేదా ఇమేజ్ */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
+            color: #333; 
         }
-
+        
         .header { 
-            background: rgba(0, 61, 61, 0.85); 
-            color: white; text-align: center; padding: 40px 10px; 
-            border-bottom: 4px solid var(--gold);
+            background: rgba(0, 77, 77, 0.9); 
+            color: white; text-align: center; padding: 30px 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
-        /* image_b5eec3.jpg లోగో డిజైన్ */
-        .logo-box {
-            width: 100px; height: 100px; background: var(--white);
-            border-radius: 20%; margin: 0 auto 15px;
-            display: flex; align-items: center; justify-content: center;
-            border: 3px solid var(--gold);
-            overflow: hidden;
+        
+        /* లోగో డిజైన్ */
+        .logo-circle {
+            width: 60px; height: 60px; background: var(--accent);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 10px;
+            font-size: 24px; font-weight: bold; border: 3px solid white;
         }
-        .logo-box img { width: 90%; height: auto; }
 
         .container { 
-            max-width: 500px; margin: 30px auto; 
+            max-width: 550px; margin: -40px auto 40px; 
             background: rgba(255, 255, 255, 0.95); 
-            padding: 30px; border-radius: 25px; /* image_b5eb9a.jpg స్టైల్ */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            padding: 30px; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            backdrop-filter: blur(5px);
         }
-
+        
         .form-group { margin-bottom: 20px; }
         label { font-weight: bold; display: block; margin-bottom: 8px; color: var(--primary); }
-
-        /* image_b5eb9a.jpg లాంటి గుండ్రటి బాక్సులు */
+        
         input[type="text"], input[type="tel"], input[type="date"], textarea {
-            width: 100%; padding: 14px; border: 2px solid #ccc; 
-            border-radius: 15px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 14px; border: 2px solid #ddd; 
+            border-radius: 12px; box-sizing: border-box; font-size: 16px;
+            transition: 0.3s;
         }
+        input:focus { border-color: var(--primary); outline: none; background: #fff; }
 
-        h3 { text-align: center; color: var(--primary); border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+        h3 { 
+            text-align: center; color: var(--primary); 
+            border-bottom: 2px dashed #ccc; padding-bottom: 10px;
+            margin-top: 30px; font-size: 20px;
+        }
 
         .item-card { 
             display: flex; align-items: center; justify-content: space-between; 
-            background: #f9f9f9; padding: 12px 15px; border-radius: 15px; 
-            margin-bottom: 10px; border: 1px solid #ddd;
+            background: white; padding: 15px; border-radius: 15px; 
+            margin-bottom: 12px; border: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
+        .item-name { font-weight: 600; color: #444; }
 
+        .controls { display: flex; align-items: center; }
         .btn-qty { 
-            width: 35px; height: 35px; background: var(--primary); 
-            color: white; border: none; border-radius: 10px; cursor: pointer;
+            width: 32px; height: 32px; background: var(--primary); 
+            color: white; border: none; border-radius: 8px; 
+            cursor: pointer; font-size: 18px; font-weight: bold; 
         }
-        .qty-input { width: 50px; text-align: center; border: none; font-size: 18px; font-weight: bold; background: transparent; }
+        .qty-input { 
+            width: 55px; text-align: center; border: 1px solid #ddd; 
+            margin: 0 10px; height: 32px; font-size: 16px; 
+            border-radius: 5px; font-weight: bold; 
+        }
 
         .submit-btn { 
             width: 100%; background: var(--primary); color: white; 
-            padding: 18px; border: none; border-radius: 15px; 
+            padding: 18px; border: none; border-radius: 12px; 
             font-size: 20px; font-weight: bold; cursor: pointer; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s;
+            margin-top: 25px; transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(0,77,77,0.3);
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .submit-btn:hover { background: #002222; transform: scale(1.02); }
+        .submit-btn:hover { background: #003333; transform: translateY(-2px); }
+
+        .footer-info { text-align: center; margin-top: 15px; font-size: 14px; color: #666; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="logo-box">
-        <!-- ఇక్కడ image_b5eec3.jpg లోగో వస్తుంది -->
-        <img src="image_b5eec3.jpg" alt="R Logo">
-    </div>
-    <h1 style="letter-spacing: 2px; margin: 0;">RAM TENT HOUSE</h1>
-    <p>ప్రో: బి. రమేష్ | 📞 7306082427</p>
+    <div class="logo-circle">RT</div>
+    <h1>Ram Tent House</h1>
+    <p style="margin: 5px 0 0;">📞 7306082427 | బి. రమేష్</p>
 </div>
 
 <div class="container">
     <form action="https://formspree.io/f/mbdwleja" method="POST">
+        
         <input type="hidden" name="_next" value="https://ram-tent-house-.github.io/thanks.html">
 
         <div class="form-group">
             <label>Customer Name (పేరు):</label>
-            <input type="text" name="Customer_Name" required placeholder="Enter Full Name">
+            <input type="text" name="Name" required placeholder="Enter Full Name">
         </div>
 
         <div class="form-group">
-            <label>Customer Phone (ఫోన్):</label>
-            <input type="tel" name="Customer_Phone" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}">
+            <label>Phone Number (ఫోన్):</label>
+            <input type="tel" name="Phone" required value="7306082427" readonly style="background: #f0f0f0;">
+            <small style="color: red;">* బుకింగ్ కోసం ఈ నంబర్‌ను సంప్రదించండి</small>
         </div>
 
         <div class="form-group">
@@ -103,20 +119,65 @@
             <input type="date" name="Date" required>
         </div>
 
-        <h3>Items (వస్తువుల ఎంపిక)</h3>
+        <h3>Items Selection (వస్తువుల ఎంపిక)</h3>
         
-        <div class="item-card"><span>Plastic Chairs</span><div class="controls"><button type="button" class="btn-qty" onclick="q('c1',-1)">-</button><input type="number" name="Chairs" id="c1" value="0" readonly class="qty-input"><button type="button" class="btn-qty" onclick="q('c1',1)">+</button></div></div>
-        <div class="item-card"><span>Steel Tables</span><div class="controls"><button type="button" class="btn-qty" onclick="q('t1',-1)">-</button><input type="number" name="Tables" id="t1" value="0" readonly class="qty-input"><button type="button" class="btn-qty" onclick="q('t1',1)">+</button></div></div>
-        <div class="item-card"><span>Coolers / Fans</span><div class="controls"><button type="button" class="btn-qty" onclick="q('f1',-1)">-</button><input type="number" name="Fans" id="f1" value="0" readonly class="qty-input"><button type="button" class="btn-qty" onclick="q('f1',1)">+</button></div></div>
-        <div class="item-card"><span>Lighting</span><div class="controls"><button type="button" class="btn-qty" onclick="q('l1',-1)">-</button><input type="number" name="Lights" id="l1" value="0" readonly class="qty-input"><button type="button" class="btn-qty" onclick="q('l1',1)">+</button></div></div>
-        <div class="item-card"><span>Sound System</span><div class="controls"><button type="button" class="btn-qty" onclick="q('s1',-1)">-</button><input type="number" name="Sound" id="s1" value="0" readonly class="qty-input"><button type="button" class="btn-qty" onclick="q('s1',1)">+</button></div></div>
+        <div class="item-card">
+            <span class="item-name">Plastic Chairs</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="q('c1',-1)">-</button>
+                <input type="number" name="Chairs" id="c1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="q('c1',1)">+</button>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <span class="item-name">Steel Tables</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="q('t1',-1)">-</button>
+                <input type="number" name="Tables" id="t1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="q('t1',1)">+</button>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <span class="item-name">Coolers / Fans</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="q('f1',-1)">-</button>
+                <input type="number" name="Fans" id="f1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="q('f1',1)">+</button>
+            </div>
+        </div>
+
+        <!-- కొత్త ఐటమ్ 1 -->
+        <div class="item-card">
+            <span class="item-name">Lighting (డెకరేషన్ లైట్స్)</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="q('l1',-1)">-</button>
+                <input type="number" name="Lighting" id="l1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="q('l1',1)">+</button>
+            </div>
+        </div>
+
+        <!-- కొత్త ఐటమ్ 2 -->
+        <div class="item-card">
+            <span class="item-name">Sound System (మైక్ సెట్)</span>
+            <div class="controls">
+                <button type="button" class="btn-qty" onclick="q('s1',-1)">-</button>
+                <input type="number" name="Sound_System" id="s1" value="0" class="qty-input">
+                <button type="button" class="btn-qty" onclick="q('s1',1)">+</button>
+            </div>
+        </div>
 
         <div class="form-group">
             <label>Others (ఇతర వివరాలు):</label>
-            <textarea name="Message" rows="3" placeholder="మరిన్ని వివరాలు ఇక్కడ రాయండి..."></textarea>
+            <textarea name="Message" rows="3" placeholder="ఇంకేవైనా వస్తువులు కావాలంటే ఇక్కడ రాయండి..."></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">SUBMIT ORDER</button>
+        <button type="submit" class="submit-btn">Submit Order</button>
+        
+        <div class="footer-info">
+            © 2026 Ram Tent House. All Rights Reserved.
+        </div>
     </form>
 </div>
 
